@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg bg-dark border-bottom border-body"
+      data-bs-theme="dark"
+    >
+      <div class="container-fluid">
+        <a href="https://github.com/avit355k">
+          <img
+            src="./image/output-onlinepngtools.png"
+            alt="SkyCast Logo"
+            style="height: 50px"
+          />
+        </a>
+        <form
+          class="d-flex w-75 align-items-center"
+          role="search"
+          onsubmit="searchLocation(event)"
+        >
+          <!-- Location Button -->
+          <button
+            class="btn btn-outline-secondary me-2"
+            onclick="getCurrentLocation()"
+          >
+            <img
+              src="./image/icon/location.png"
+              alt="Location"
+              style="height: 30px; cursor: pointer"
+            />
+          </button>
+          <!-- Search Input - Bigger and More Prominent -->
+          <input
+            type="text"
+            id="userLocation"
+            class="form-control me-2 flex-grow-1 border border-secondary"
+            placeholder="Search for places..."
+          />
+          <!-- Search Button -->
+          <button class="btn btn-outline-success me-2" type="submit">
+            Search
+          </button>
+          <!-- Temperature Converter (Smaller) -->
+          <select
+            id="converter"
+            class="form-select w-auto"
+            onchange="convertTemperature()"
+          >
+            <option value="C">°C</option>
+            <option value="F">°F</option>
+          </select>
+        </form>
+      </div>
+    </nav>
+
+    <div class="home">
+      <!-- Full Width Date & Time -->
+      <div class="location-info">
+        <div>
+          <h2 class="city">City, Country</h2>
+        </div>
+        <div>
+          <h4 class="date">date</h4>
+          <h5 class="time">time</h5>
+        </div>
+      </div>
+
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- Left Bar: Temperature + Icon -->
+        <div class="left-bar d-flex align-items-center">
+          <img
+            id="temp-icon"
+            src="./image/icon/temperature.png"
+            alt="Temperature"
+            style="height: 50px"
+          />
+          <h2 class="temperature me-2"></h2>
+          <h3 class="Realfeels"></h3>
+        </div>
+        <!-- Right Bar: Weather Icon -->
+        <div class="right-bar">
+          <div id="weatherIcon"></div>
+          <h2 class="weather-status"></h2>
+        </div>
+      </div>
+
+      <!-- Weather Highlights -->
+      <div class="weather-output">
+        <h2 class="heading">Today's Highlights</h2>
+        <div class="highlight">
+          <div class="box humidity">
+            Humidity <img src="./image/icon/humidity.png" alt="Humidity" />
+            <h1 id="Hvalue"></h1>
+          </div>
+          <div class="box wind-Speed">
+            Wind Speed <img src="./image/icon/wind.png" alt="Wind Speed" />
+            <h1 id="Wvalue"></h1>
+          </div>
+
+          <div class="box cloud">
+            Cloud <img src="./image/icon/clouds.png" alt="Cloud" />
+            <h1 id="Cvalue"></h1>
+          </div>
+          <div class="box pressure">
+            Pressure <img src="./image/icon/barometer.png" alt="Pressure" />
+            <h1 id="Pvalue"></h1>
+          </div>
+
+          <div class="box visibility">
+            Visibility <img src="./image/icon/visiblity.png" alt="Visibility" />
+            <h1 id="visibilityValue"></h1>
+          </div>
+          <div class="box dewpoint">
+            Dew Point <img src="./image/icon/dew.png" alt="Dew Point" />
+            <h1 id="dewpointvalue"></h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Width Sunrise & Sunset Box -->
+      <div class="box sunrise d-flex justify-content-between align-items-center">
+        <div class="text-start">
+          <h3>Sunrise & Sunset</h3>
+        <span id="sunrise-time">Sunrise: --:-- AM</span>
+        <span id="sunset-time" >Sunset: --:-- PM</span>
+        </div>
+       <div>
+        <img src="./image/icon/sunrise-sunset.png" alt="Sunrise Sunset Icon" class="sun-icon">
+       </div>
+      </div>
+
+      <div class="forecast-container">
+        <h2 class="heading">Weekly Forecast</h2>
+        <div id="WeekForecast" class="forecast-bar"></div>
+        <h2 class="heading">Hourly Weather</h2>
+        <div class="hourly-forecast forecast-bar" id="HourlyForecast"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
